@@ -7,7 +7,7 @@ const secondmessage=document.querySelector('#message2')
 weatherform.addEventListener('submit',(e)=>{
     e.preventDefault()
     const location= search.value
-    fetch("http://localhost:5000/weather?adresse="+location).then((response)=>{
+    fetch("/weather?adresse="+location).then((response)=>{
         
     response.json().then((data={})=>{
         if (data.error){firstmessage.textContent=data.error

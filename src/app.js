@@ -5,11 +5,15 @@ const forecast=require('./outils/forecast')
 const express=require('express')
  const app=express()
  const hbs=require('hbs')
+ // set the heroku port or my port
+ const port=process.env.PORT || 5000
 //paths
 const direc=path.join(__dirname,'../public')
 const partialpath=path.join(__dirname,'/partials')
 //handlebars
 app.set('view engine','hbs')
+app.set('views', __dirname + '/views');
+
 hbs.registerPartials(partialpath)
 //static directory to serve
 app.use(express.static(direc))
@@ -59,6 +63,6 @@ app.get('*',(req,res)=>{
 })
 
 
- app.listen(5000,()=>{
-     console.log('Server Up on 5000')
+ app.listen(port,()=>{
+     console.log('Server Up on ' + port)
  })
